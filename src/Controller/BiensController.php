@@ -14,7 +14,7 @@ class BiensController extends AbstractController
     private $entityManager;
 
 
-    public function __construct(EntityManagerInterface $entityManager)
+     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
 
@@ -24,7 +24,16 @@ class BiensController extends AbstractController
     {
         $biens = $this->entityManager->getRepository(Biens::class)->findAll();
         return $this->render('biens/biens.html.twig', [
-            'biens' => $biens,
+            'biens' => $biens
+        ]);
+    }
+
+    #[Route('/details', name: 'app_details')]
+    public function ind(): Response
+    {
+        //$biens = $this->entityManager->getRepository(Biens::class)->findAll();
+        return $this->render('biens/details.html.twig', [
+            'controller_name' => 'BiensController',
         ]);
     }
 }

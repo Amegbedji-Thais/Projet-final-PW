@@ -15,6 +15,37 @@
                     <ul class="bread-crumb clearfix">
                         <li><a href="accueil">Accueil</a></li>
                         <li>Favoris</li>
+                        <div class="deals-grid-content grid-item">
+                            <div class="row clearfix">
+                                {% for bien in biens %}
+                                    <div class="col-lg-6 col-md-6 col-sm-12 feature-block">
+                                        <div class="feature-block-one">
+                                            <div class="inner-box">
+                                                <div class="image-box">
+                                                    <figure class="image"><img src="assets/images/image8.jpg" alt=""></figure>
+                                                </div>
+                                                <div class="lower-content">
+                                                    <div class="title-text"><h4>{{ bien.getBien().titrebien }}</h4></div>
+                                                    <div class="price-box clearfix">
+                                                        <div class="price-info pull-left">
+                                                            <h4>{{ bien.getBien().prixbien }}€</h4>
+                                                        </div>
+                                                        <ul class="other-option pull-right clearfix">
+                                                            <li><a href="{{ path('app_lesfavorissup', {'id': bien.id}) }}"><i class="icon-13"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <p>{{ bien.getBien().descriptionbien }}</p>
+                                                    <ul class="more-details clearfix">
+                                                        <li>{{ bien.getBien().surfacebien }}</li>
+                                                    </ul>
+                                                    <div class="btn-box"><a href="{{ path('app_details', {'id': bien.id}) }}" class="theme-btn btn-two">Voir les détails</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
                     </ul>
                 </div>
             </div>

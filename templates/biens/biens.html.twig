@@ -11,10 +11,10 @@
         </div>
         <div class="auto-container">
             <div class="content-box clearfix">
-                <h1>Biens en location</h1>
+                <h1>Biens</h1>
                 <ul class="bread-crumb clearfix">
                     <li><a href="home">Accueil</a></li>
-                    <li>Biens en location</li>
+                    <li>Biens </li>
                 </ul>
             </div>
         </div>
@@ -120,14 +120,14 @@
                                                                 <h4>{{ bien.prixbien }}€</h4>
                                                             </div>
                                                             <ul class="other-option pull-right clearfix">
-                                                                <li><a href="property-details.html"><i class="icon-13"></i></a></li>
+                                                                <li><a href="{{ path('app_lesfavoris', {'id': bien.id}) }}"><i class="icon-13"></i></a></li>
                                                             </ul>
                                                         </div>
                                                         <p>{{ bien.descriptionbien }}</p>
                                                         <ul class="more-details clearfix">
                                                             <li>{{ bien.surfacebien }}</li>
                                                         </ul>
-                                                        <div class="btn-box"><a href="property-details.html" class="theme-btn btn-two">Voir les détails</a></div>
+                                                        <div class="btn-box"><a href="details" class="theme-btn btn-two">Voir les détails</a></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -138,7 +138,7 @@
                         </div>
                         <div class="pagination-wrapper">
                             <ul class="pagination clearfix">
-                                <li><a href="vente" class="current">1</a></li>
+                                <li><a href="biens" class="current">1</a></li>
                                 <li><a>2</a></li>
                                 <li><a>3</a></li>
                                 <li><a><i class="fas fa-angle-right"></i></a></li>

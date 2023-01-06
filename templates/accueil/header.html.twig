@@ -1,34 +1,3 @@
-<!-- preloader -->
-<div class="loader-wrap">
-    <div class="preloader">
-        <div class="preloader-close"><i class="far fa-times"></i></div>
-        <div id="handle-preloader" class="handle-preloader">
-            <div class="animation-preloader">
-                <div class="spinner"></div>
-                <div class="txt-loading">
-                            <span data-text-preloader="s" class="letters-loading">
-                                s
-                            </span>
-                    <span data-text-preloader="a" class="letters-loading">
-                                a
-                            </span>
-                    <span data-text-preloader="f" class="letters-loading">
-                                f
-                            </span>
-                    <span data-text-preloader="e" class="letters-loading">
-                                e
-                            </span>
-                    <span data-text-preloader="r" class="letters-loading">
-                                r
-                            </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- preloader end -->
-
-
 <!-- switcher menu -->
 <div class="switcher">
     <div class="switch_btn">
@@ -100,15 +69,15 @@
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
-                                <li><a href="accueil"><span>Accueil</span></a></li>
-                                <li><a href="biens"><span>Biens</span></a></li>
+                                <li><a href="{{ path ('app_accueil') }}"><span>Accueil</span></a></li>
+                                <li><a href="{{ path ('app_biens') }}"><span>Biens</span></a></li>
                                 <li class="dropdown"><a href="accueil"><span>Catégories</span></a>
                                     <ul>
-                                        <li><a href="terrains">Terrains agricoles</a></li>
-                                        <li><a href="prairies">Prairies</a></li>
-                                        <li><a href="bois">Bois</a></li>
-                                        <li><a href="batiment">Bâtiments</a></li>
-                                        <li><a href="exploitation">Exploitations</a></li>
+                                        <li><a href="{{ path ('app_biens') }}">Terrains agricoles</a></li>
+                                        <li><a href="{{ path ('app_prairies') }}">Prairies</a></li>
+                                        <li><a href="{{ path ('app_bois') }}">Bois</a></li>
+                                        <li><a href="{{ path ('app_batiment') }}">Bâtiments</a></li>
+                                        <li><a href="{{ path ('app_exploitation') }}">Exploitations</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="favoris"><span>Favoris</span></a></li>

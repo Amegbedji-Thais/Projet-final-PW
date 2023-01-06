@@ -20,6 +20,9 @@ class Favoris
     #[ORM\JoinColumn(nullable: false)]
     private ?Biens $bien = null;
 
+    #[ORM\Column]
+    private ?bool $send = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,18 @@ class Favoris
     public function setBien(?Biens $bien): self
     {
         $this->bien = $bien;
+
+        return $this;
+    }
+
+    public function isSend(): ?bool
+    {
+        return $this->send;
+    }
+
+    public function setSend(bool $send): self
+    {
+        $this->send = $send;
 
         return $this;
     }
