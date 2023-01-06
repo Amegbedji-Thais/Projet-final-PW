@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller\Admin;
 
+use App\Entity\Bien;
+use App\Repository\BienRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,7 +16,7 @@ class CategoriesController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(CategoriesRepository $CatsRepo)
+    public function index(BienRepository $bienRepo)
     {
         return $this->render('admin/categories/index.html.twig', [
             'controller_name' => 'CategoriesController'
@@ -24,17 +26,17 @@ class CategoriesController extends AbstractController
     /**
      * @Route("/ajout", name="ajout")
      */
-    public function ajoutCategorie(Request $request)
+    public function ajoutBien(Request $request)
     {
-        $categorie = new Categories;
+        $bien = new Bien;
 
-        $form = $this->createForm(CategoriesType::class, $categorie);
+        $form = $this->createForm(BienType::class, $bien);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
-            $em->persist($categorie);
+            $em->persist($bien);
             $em->flush();
 
             return $this->redirectToRoute('admin_categories_home');
@@ -48,15 +50,15 @@ class CategoriesController extends AbstractController
     /**
      * @Route("/modifier/{id}", name="modifier")
      */
-    public function ModifCategorie(Categories $categorie, Request $request)
+    public function ModifCategorie(Bien $bien, Request $request)
     {
-        $form = $this->createForm(CategoriesType::class, $categorie);
+        $form = $this->createForm(CategoriesType::class, $bien);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
-            $em->persist($categorie);
+            $em->persist($bien);
             $em->flush();
 
             return $this->redirectToRoute('admin_categories_home');
