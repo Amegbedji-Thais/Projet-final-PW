@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/admin/categories", name="admin_categories_")
  * @package App\Controller\Admin
  */
-class CategoriesController extends AbstractController
+class AdminCategoriesController extends AbstractController
 {
     /**
      * @Route("/", name="home")
