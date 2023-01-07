@@ -17,4 +17,9 @@ class CategoriesController extends AbstractController
             'controller_name' => 'CategoriesController',
         ]);
     }
+
+    public function afficherCat(BienRepository $bienRepository){
+        Return $this->render('home.html.twig');
+    }
+
 }
