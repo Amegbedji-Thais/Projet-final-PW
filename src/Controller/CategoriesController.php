@@ -24,7 +24,7 @@ class CategoriesController extends AbstractController
 
     public function terr(): Response
     {
-        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie'=> 1]);
+        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie'=> 6]);
         return $this->render('categories/terrains.html.twig', [
             'biens' => $biens,
         ]);
@@ -34,7 +34,7 @@ class CategoriesController extends AbstractController
 
     public function prair(): Response
     {
-        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie'=> 2]);
+        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie'=> 7]);
         return $this->render('categories/prairies.html.twig', [
             'biens' => $biens,
         ]);
@@ -44,7 +44,7 @@ class CategoriesController extends AbstractController
 
     public function boi(): Response
     {
-        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie' => 4]);
+        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie' => 8]);
         return $this->render('categories/bois.html.twig', [
             'biens' => $biens,
         ]);
@@ -53,7 +53,7 @@ class CategoriesController extends AbstractController
 
     public function bat(): Response
     {
-        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie' => 3]);
+        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie' => 9]);
         return $this->render('categories/batiments.html.twig', [
             'biens' => $biens,
         ]);
@@ -63,7 +63,7 @@ class CategoriesController extends AbstractController
 
     public function exp(): Response
     {
-        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie'=> 5]);
+        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie'=> 10]);
         return $this->render('categories/exploitation.html.twig', [
             'biens' => $biens,
         ]);

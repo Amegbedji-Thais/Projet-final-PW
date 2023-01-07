@@ -39,6 +39,14 @@ class BiensRepository extends ServiceEntityRepository
         }
     }
 
+
+    /**
+     * Récupère les produits en lien avec une recherche
+     * @return Biens[]
+     */
+    public function findSearch():array {
+        return $this->findAll();
+    }
 //    /**
 //     * @return Biens[] Returns an array of Biens objects
 //     */

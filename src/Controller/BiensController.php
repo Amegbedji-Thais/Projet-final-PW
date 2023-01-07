@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Biens;
+use App\Repository\BiensRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +20,7 @@ class BiensController extends AbstractController
         $this->entityManager = $entityManager;
 
     }
+
     #[Route('/biens', name: 'app_biens')]
     public function index(): Response
     {
@@ -27,6 +29,18 @@ class BiensController extends AbstractController
             'biens' => $biens
         ]);
     }
+
+    /**
+    #[Route('/biens', name: 'app_bienssearch')]
+    public function indexsearch(BiensRepository $repository): Response
+    {
+       //$data = new SearchData();
+       $biens = $repository->findSearch();
+        return $this->render('biens/biens.html.twig', [
+            'biens' => $biens
+        ]);
+    }
+    */
 
     #[Route('/details', name: 'app_details')]
     public function ind(): Response

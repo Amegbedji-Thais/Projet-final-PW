@@ -30,7 +30,7 @@
                                                         <div class="price-info pull-left">
                                                             <h4>{{ bien.getBien().prixbien }}€</h4>
                                                         </div>
-                                                        <ul class="other-option pull-right clearfix">
+                                                        <ul class="other-option pull-right clearfix", style = "background-color: #2dbe6c">
                                                             <li><a href="{{ path('app_lesfavorissup', {'id': bien.id}) }}"><i class="icon-13"></i></a></li>
                                                         </ul>
                                                     </div>
@@ -39,7 +39,10 @@
                                                         <li>{{ bien.getBien().surfacebien }}</li>
                                                     </ul>
                                                     <div class="btn-box"><a href="{{ path('app_details', {'id': bien.id}) }}" class="theme-btn btn-two">Voir les détails</a></div>
-                                                </div>
+                                                    <div class="send-mail">
+                                                        <div class="btn-box"><a href="{{ path('app_mailing') }}" class="btn btn-dark">Me l'envoyer par mail</a></div>
+                                                    </div>
+                                                </div>-
                                             </div>
                                         </div>
                                     </div>

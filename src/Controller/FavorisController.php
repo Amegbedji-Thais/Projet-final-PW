@@ -5,11 +5,13 @@ namespace App\Controller;
 use App\Entity\Biens;
 use App\Entity\Favoris;
 use App\Repository\FavorisRepository;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
@@ -97,7 +99,7 @@ class FavorisController extends AbstractController
             $favoris->setSend(false);
             $this->entityManager->persist($favoris);
             $this->entityManager->flush();
-
+            $this->addFlash('success','Bien ajouté en favoris');
         }
 
         return $this->redirectToRoute('app_favoris', [], Response::HTTP_SEE_OTHER);
@@ -105,7 +107,37 @@ class FavorisController extends AbstractController
 
     #[Route('/favoris/remove/{id}', name: 'app_lesfavorissup')]
 public function removeFav(Favoris $favoris){
+        $this->addFlash('success','Bien supprimé avec succes');
         $this->favorisRepository->remove($favoris, true);
+        return $this->redirectToRoute('app_favoris', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/laymail', name: 'app_mailing')]
+    public function mailing(Request $request, MailerInterface $mailer){
+        $session = $request->getSession();
+        $mailUser = $session->get('email');
+        if($mailUser){
+            $favoris = $this->favorisRepository->findBy(array('mail_fav' => $mailUser, 'send' => false));
+            try {
+                $email = (new TemplatedEmail())
+                    ->from('safer@mail.com')
+                    ->to($mailUser)
+                    ->subject('Liste des bien favoris!')
+                    ->htmlTemplate('email/laymail.html.twig')
+
+                    // pass variables (name => value) to the template
+                    ->context([
+                        'favoris' => $favoris
+                    ])
+                ;
+
+                $mailer->send($email);
+            }catch (\Throwable $th){
+                dd($th);
+            }
+        }
+
+
         return $this->redirectToRoute('app_favoris', [], Response::HTTP_SEE_OTHER);
     }
 }
