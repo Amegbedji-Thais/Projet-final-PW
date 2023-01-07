@@ -14,6 +14,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminCategoriesController extends AbstractController
 {
     /**
+     * @var BienRepository
+     */
+    private $repository;
+
+
+    /**
      * @Route("/", name="home")
      */
     public function index(BienRepository $bienRepo)
