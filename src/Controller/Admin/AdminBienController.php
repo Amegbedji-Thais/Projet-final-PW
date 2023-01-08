@@ -26,11 +26,11 @@ class AdminBienController extends AbstractController
      */
     private ObjectManager $em;
 
-    /*public function __construct(BienRepository $repository, ObjectManager $em)
+    public function __construct(BienRepository $repository, ObjectManager $em)
     {
         $this -> repository = $repository;
         $this -> em = $em;
-    }*/
+    }
 
     /**
      * @Route("/admin", name="home")
