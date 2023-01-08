@@ -1,0 +1,18 @@
+{{ form_start(form) }}
+<div class = "row">
+    <div class=""col-md-4>{{ form_row(form.id) }}</div>
+    <div class=""col-md-4>{{ form_row(form.Type_Bien) }}</div>
+    <div class=""col-md-4>{{ form_row(form.Titre_Bien) }}</div>
+</div>
+<div class = "row">
+    <div class=""col-md-2>{{ form_row(form.Surface_Bien) }}</div>
+    <div class=""col-md-2>{{ form_row(form.Prix_Bien) }}</div>
+    <div class=""col-md-2>{{ form_row(form.Localisation_Bien) }}</div>
+</div>
+<div class = "row">
+    <div class=""col-md-3>{{ form_row(form.Localisation_Bien) }}</div>
+    <div class=""col-md-5>{{ form_row(form.PDescription_Bien) }}</div>
+</div>
+{{ form_widget(form) }}
+<button class="btn btn-primary">{{  button|default('Enregistrer') }}</button>
+{{ form_end(form) }}
