@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AdminRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -28,6 +30,14 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $mdp_adm = null;
+
+    #[ORM\ManyToMany(targetEntity: biens::class, inversedBy: 'adm_id')]
+    private Collection $bien_id;
+
+    public function __construct()
+    {
+        $this->bien_id = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -101,5 +111,29 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         // TODO: Implement getUserIdentifier() method.
+    }
+
+    /**
+     * @return Collection<int, biens>
+     */
+    public function getBienId(): Collection
+    {
+        return $this->bien_id;
+    }
+
+    public function addBienId(biens $bienId): self
+    {
+        if (!$this->bien_id->contains($bienId)) {
+            $this->bien_id->add($bienId);
+        }
+
+        return $this;
+    }
+
+    public function removeBienId(biens $bienId): self
+    {
+        $this->bien_id->removeElement($bienId);
+
+        return $this;
     }
 }
