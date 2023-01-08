@@ -4,7 +4,8 @@ namespace App\Controller\Admin;
 use App\Entity\Bien;
 use App\Form\BienType;
 use App\Repository\BienRepository;
-use Doctrine\Persistence\ObjectManager;
+//use Doctrine\ORM\EntityManager;
+//use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,16 +22,8 @@ class AdminBienController extends AbstractController
      */
     private BienRepository $repository;
 
-    /**
-     * @var ObjectManager
-     */
-    private ObjectManager $em;
 
-    public function __construct(BienRepository $repository, ObjectManager $em)
-    {
-        $this -> repository = $repository;
-        $this -> em = $em;
-    }
+
 
     /**
      * @Route("/admin", name="home")
