@@ -4,15 +4,15 @@ namespace App\Controller\Admin;
 use App\Entity\Bien;
 use App\Form\BienType;
 use App\Repository\BienRepository;
-//use Doctrine\ORM\EntityManager;
-//use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/bien", name="admin_bien_")
+ * @Route("/admin/bien", name="admin.bien")
  * @package App\Controller\Admin
  */
 class AdminBienController extends AbstractController
@@ -22,7 +22,16 @@ class AdminBienController extends AbstractController
      */
     private BienRepository $repository;
 
+     /**
+     * @var EntityManagerInterface
+     */
+    private EntityManagerInterface $em;
 
+    public function __construct(BienRepository $repository, EntityManagerInterface $em)
+    {
+        $this->repository = $repository;
+        $this->em = $em;
+    }
 
 
     /**
