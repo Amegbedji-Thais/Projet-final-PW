@@ -6,6 +6,7 @@ use App\Entity\Biens;
 use App\Entity\Categories;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use App\Entity\Admin;
 
 class AppFixtures extends Fixture
 {
@@ -31,7 +32,6 @@ class AppFixtures extends Fixture
         $caterorie5->setTitreCat('Exploitations');
         $manager->persist($caterorie5);
 
-        
         $manager->flush();
 
         $bien = new Biens();
@@ -364,6 +364,18 @@ class AppFixtures extends Fixture
         $bien->setImage('AA72220088RB.jpg');
         $manager->persist($bien);
 
+        $admin = new Admin();
+        $admin->setNomAdm('Admin');
+        $admin->setPrenomAdm('Admin');
+        $admin->setEmailAdm('admin@safer.fr');
+        $admin->setMdpAdm('$2y$13$BqAi9d2BLyNUih5uCPVhpeZ510ZTK3K1TD0zju91t/xtqHr2MHtDe');
+        $admin->setRoles('["ROLE_ADMIN"]');
+        $manager->persist($admin);
+        //$2y$13$BqAi9d2BLyNUih5uCPVhpeZ510ZTK3K1TD0zju91t/xtqHr2MHtDe
+
+        /*"INSERT INTO admin (id, nom_adm, prenom_adm, email_adm, mdp_adm) \
+>>   VALUES (nextval('admin_id_seq'), 'admin', 'admin','admin@safer.fr', \
+>>   '\$argon2id\$v=19\$m=65536,t=4,p=1\$BQG+jovPcunctc30xG5PxQ\$TiGbx451NKdo+g9vLtfkMy4KjASKSOcnNxjij4gTX1s')"*/
         $manager->flush();
     }
 }
