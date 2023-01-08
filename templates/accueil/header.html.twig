@@ -73,11 +73,11 @@
                                 <li><a href="{{ path ('app_biens') }}"><span>Biens</span></a></li>
                                 <li class="dropdown"><a href="accueil"><span>Catégories</span></a>
                                     <ul>
-                                        <li><a href="{{ path ('app_biens') }}">Terrains agricoles</a></li>
-                                        <li><a href="{{ path ('app_prairies') }}">Prairies</a></li>
-                                        <li><a href="{{ path ('app_bois') }}">Bois</a></li>
-                                        <li><a href="{{ path ('app_batiment') }}">Bâtiments</a></li>
-                                        <li><a href="{{ path ('app_exploitation') }}">Exploitations</a></li>
+                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Terrains Agricoles'}) }}">Terrains agricoles</a></li>
+                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'details'}) }}">details</a></li>
+                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Bois'}) }}">Bois</a></li>
+                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Batiments'}) }}">Bâtiments</a></li>
+                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Exploitations'}) }}">Exploitations</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="favoris"><span>Favoris</span></a></li>

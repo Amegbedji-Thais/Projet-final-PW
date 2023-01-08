@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Biens;
+use App\Entity\Categories;
+use App\Repository\CategoriesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,52 +22,26 @@ class CategoriesController extends AbstractController
 
     }
 
-     #[Route("/terrains", name:'app_terrains')]
+     #[Route("/category/biens/{name}", name:'app_cat_biens')]
 
-    public function terr(): Response
+    public function listeBiensParNom($name, CategoriesRepository $categoriesRepository): Response
     {
+
+        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie'=> $categoriesRepository->findOneBy(array('titre_cat' => $name))->getId()]);
+        return $this->render('categories/details.html.twig', [
+            'biens' => $biens,
+            'name' => $name
+        ]);
+    }
+
+    /**public function listeBiensParNom(Categories $categories): Response
+    {
+        dd($categories);
         $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie'=> 1]);
-        return $this->render('categories/terrains.html.twig', [
+        return $this->render('categories/details.html.twig', [
             'biens' => $biens,
         ]);
-    }
+    }*/
 
-    #[Route("/prairies", name:'app_prairies')]
 
-    public function prair(): Response
-    {
-        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie'=> 2]);
-        return $this->render('categories/prairies.html.twig', [
-            'biens' => $biens,
-        ]);
-    }
-
-    #[Route("/bois", name:'app_bois')]
-
-    public function boi(): Response
-    {
-        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie' => 4]);
-        return $this->render('categories/bois.html.twig', [
-            'biens' => $biens,
-        ]);
-    }
-    #[Route("/batiment", name:'app_batiment')]
-
-    public function bat(): Response
-    {
-        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie' => 3]);
-        return $this->render('categories/batiments.html.twig', [
-            'biens' => $biens,
-        ]);
-    }
-
-    #[Route("/exploitation", name:'app_exploitation')]
-
-    public function exp(): Response
-    {
-        $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie'=> 5]);
-        return $this->render('categories/exploitation.html.twig', [
-            'biens' => $biens,
-        ]);
-    }
 }
