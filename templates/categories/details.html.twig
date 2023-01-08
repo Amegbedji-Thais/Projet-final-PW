@@ -17,7 +17,7 @@
                 <div class="content-box clearfix">
                     <h1>{{ name }}</h1>
                     <ul class="bread-crumb clearfix">
-                        <li><a href="accueil">Accueil</a></li>
+                        <li><a href="{{ path ('app_accueil') }}">Accueil</a></li>
                         <li>{{ name }}</li>
                     </ul>
                 </div>
@@ -43,7 +43,8 @@
                                                 <div class="feature-block-one">
                                                     <div class="inner-box">
                                                         <div class="image-box">
-                                                            <figure class="image"><img src="assets/images/image8.jpg" alt=""></figure>
+                                                            <figure class="image"><img src={{ bien.image }} alt=""></figure>
+                                                            <span class="category">{{ bien.typebien }}</span>
                                                         </div>
                                                         <div class="lower-content">
                                                             <div class="title-text"><h4>{{ bien.titrebien }}</h4></div>
@@ -52,14 +53,14 @@
                                                                     <h4>{{ bien.prixbien }}€</h4>
                                                                 </div>
                                                                 <ul class="other-option pull-right clearfix">
-                                                                    <li><a href="favoris"><i class="icon-13"></i></a></li>
+                                                                    <li><a href="{{ path ('app_favoris') }}"><i class="icon-13"></i></a></li>
                                                                 </ul>
                                                             </div>
                                                             <p>{{ bien.descriptionbien }}</p>
                                                             <ul class="more-details clearfix">
                                                                 <li>{{ bien.surfacebien }}</li>
                                                             </ul>
-                                                            <div class="btn-box"><a href="details" class="theme-btn btn-two">Voir les détails</a></div>
+                                                            <div class="btn-box"><a href="biens/details" class="theme-btn btn-two">Voir les détails</a></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -70,9 +71,9 @@
                             </div>
                             <div class="pagination-wrapper">
                                 <ul class="pagination clearfix">
-                                    <li><a href="accueil" class="current">1</a></li>
-                                    <li><a>2</a></li>
-                                    <li><a>3</a></li>
+                                    <li><a href="{{ path ('app_categories') }}" class="current">1</a></li>
+                                    <li><a href="{{ path ('app_categories') }}>2</a></li>
+                                    <li><a href="{{ path ('app_categories') }}>3</a></li>
                                     <li><a><i class="fas fa-angle-right"></i></a></li>
                                 </ul>
                             </div>

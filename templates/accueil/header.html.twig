@@ -42,9 +42,9 @@
             </div>
             <div class="right-column pull-right">
                 <ul class="social-links clearfix">
-                    <li><a href="accueil"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="accueil"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="accueil"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="{{ path ('app_accueil') }}"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="{{ path ('app_accueil') }}"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="{{ path ('app_accueil') }}"><i class="fab fa-instagram"></i></a></li>
                 </ul>
                 <div class="sign-box">
                     <a href="login"><i class="fas fa-user"></i>Se connecter</a>
@@ -57,7 +57,7 @@
         <div class="outer-box">
             <div class="main-box">
                 <div class="logo-box">
-                    <figure class="logo"><a href="accueil"><img src="assets/images/logosafer.PNG" alt=""></a></figure>
+                    <figure class="logo"><a href="{{ path ('app_accueil') }}"><img src="assets/images/logosafer.PNG" alt=""></a></figure>
                 </div>
                 <div class="menu-area clearfix">
                     <!--Mobile Navigation Toggler-->
@@ -71,17 +71,17 @@
                             <ul class="navigation clearfix">
                                 <li><a href="{{ path ('app_accueil') }}"><span>Accueil</span></a></li>
                                 <li><a href="{{ path ('app_biens') }}"><span>Biens</span></a></li>
-                                <li class="dropdown"><a href="accueil"><span>Catégories</span></a>
+                                <li class="dropdown"><a href="{{ path ('app_accueil') }}"><span>Catégories</span></a>
                                     <ul>
                                         <li><a href="{{ path ('app_cat_biens', {'name' : 'Terrains Agricoles'}) }}">Terrains agricoles</a></li>
-                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'details'}) }}">Prairies</a></li>
+                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Prairies'}) }}">Prairies</a></li>
                                         <li><a href="{{ path ('app_cat_biens', {'name' : 'Bois'}) }}">Bois</a></li>
                                         <li><a href="{{ path ('app_cat_biens', {'name' : 'Batiments'}) }}">Bâtiments</a></li>
                                         <li><a href="{{ path ('app_cat_biens', {'name' : 'Exploitations'}) }}">Exploitations</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="favoris"><span>Favoris</span></a></li>
-                                <li><a href="contact"><span>Contact</span></a></li>
+                                <li><a href="{{ path ('app_favoris') }}"><span>Favoris</span></a></li>
+                                <li><a href="{{ path ('app_contact') }}"><span>Contact</span></a></li>
                             </ul>
                         </div>
                     </nav>
