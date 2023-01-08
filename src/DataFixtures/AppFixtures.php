@@ -31,6 +31,7 @@ class AppFixtures extends Fixture
         $caterorie5->setTitreCat('Exploitations');
         $manager->persist($caterorie5);
 
+        
         $manager->flush();
 
         $bien = new Biens();
