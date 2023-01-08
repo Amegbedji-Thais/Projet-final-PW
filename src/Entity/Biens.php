@@ -37,15 +37,20 @@ class Biens
     #[ORM\JoinColumn(nullable: false)]
     private ?Categories $categorie = null;
 
-    #[ORM\OneToMany(mappedBy: 'bien', targetEntity: Favoris::class, orphanRemoval: true)]
-    private Collection $favoris;
-
     #[ORM\Column(length: 255)]
     private ?string $image = null;
+
+    #[ORM\ManyToMany(targetEntity: Favoris::class, mappedBy: 'bien_id')]
+    private Collection $favori_id;
+
+    #[ORM\ManyToMany(targetEntity: Admin::class, mappedBy: 'bien_id')]
+    private Collection $adm_id;
 
     public function __construct()
     {
         $this->favoris = new ArrayCollection();
+        $this->favori_id = new ArrayCollection();
+        $this->adm_id = new ArrayCollection();
     }
     
 
@@ -182,6 +187,60 @@ class Biens
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Favoris>
+     */
+    public function getFavoriId(): Collection
+    {
+        return $this->favori_id;
+    }
+
+    public function addFavoriId(Favoris $favoriId): self
+    {
+        if (!$this->favori_id->contains($favoriId)) {
+            $this->favori_id->add($favoriId);
+            $favoriId->addBienId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavoriId(Favoris $favoriId): self
+    {
+        if ($this->favori_id->removeElement($favoriId)) {
+            $favoriId->removeBienId($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Admin>
+     */
+    public function getAdmId(): Collection
+    {
+        return $this->adm_id;
+    }
+
+    public function addAdmId(Admin $admId): self
+    {
+        if (!$this->adm_id->contains($admId)) {
+            $this->adm_id->add($admId);
+            $admId->addBienId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdmId(Admin $admId): self
+    {
+        if ($this->adm_id->removeElement($admId)) {
+            $admId->removeBienId($this);
+        }
 
         return $this;
     }
