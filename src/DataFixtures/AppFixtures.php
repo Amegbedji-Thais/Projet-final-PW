@@ -31,6 +31,7 @@ class AppFixtures extends Fixture
         $caterorie5->setTitreCat('Exploitations');
         $manager->persist($caterorie5);
 
+        
         $manager->flush();
 
         $bien = new Biens();
@@ -41,7 +42,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(2000);
         $bien->setCategorie($caterorie1);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/38TB22187.jpg');
+        $bien->setImage('38TB22187.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -52,7 +53,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(1300);
         $bien->setCategorie($caterorie1);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/48RE11201.jpg');
+        $bien->setImage('48RE11201.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -63,7 +64,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(11000);
         $bien->setCategorie($caterorie1);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/47.06.098.jpg');
+        $bien->setImage('47.06.098.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -74,7 +75,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(-1);
         $bien->setCategorie($caterorie1);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/88 FB .jpg');
+        $bien->setImage('88FB.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -85,7 +86,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(156000);
         $bien->setCategorie($caterorie1);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/5667DB.jpg');
+        $bien->setImage('5667DB.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -96,7 +97,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(113000);
         $bien->setCategorie($caterorie2);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/765DN.jpg');
+        $bien->setImage('765DN.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -107,7 +108,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(3000);
         $bien->setCategorie($caterorie2);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/76RZDC.jpg');
+        $bien->setImage('76RZDC.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -118,7 +119,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(1200);
         $bien->setCategorie($caterorie2);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/9875RDC.jpg');
+        $bien->setImage('9875RDC.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -129,7 +130,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(2400);
         $bien->setCategorie($caterorie2);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/Z34.345.45.jpg');
+        $bien->setImage('Z34.345.45.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -140,7 +141,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(7700);
         $bien->setCategorie($caterorie2);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/64.02.59.jpg');
+        $bien->setImage('64.02.59.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -151,7 +152,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(400000);
         $bien->setCategorie($caterorie2);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/7629CA.jpg');
+        $bien->setImage('7629CA.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -162,7 +163,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(15000);
         $bien->setCategorie($caterorie2);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/43LM220118.jpg');
+        $bien->setImage('43LM220118.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -173,7 +174,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(500);
         $bien->setCategorie($caterorie3);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/65.23.876.jpg');
+        $bien->setImage('65.23.876.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -184,7 +185,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(800);
         $bien->setCategorie($caterorie3);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/344334UJ.jpg');
+        $bien->setImage('344334UJ.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -195,7 +196,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(12000);
         $bien->setCategorie($caterorie3);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/QDSGF56.jpg');
+        $bien->setImage('QDSGF56.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -206,7 +207,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(120000);
         $bien->setCategorie($caterorie3);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/313453DR.jpg');
+        $bien->setImage('313453DR.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -217,7 +218,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(30000);
         $bien->setCategorie($caterorie3);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/345E7EG.jpg');
+        $bien->setImage('345E7EG.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -228,7 +229,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(400000);
         $bien->setCategorie($caterorie3);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/81EL11100.jpg');
+        $bien->setImage('81EL11100.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -239,7 +240,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(700);
         $bien->setCategorie($caterorie4);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/48EL11345.jpg');
+        $bien->setImage('48EL11345.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -250,7 +251,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(860);
         $bien->setCategorie($caterorie4);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/23.16.104.jpg');
+        $bien->setImage('23.16.104.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -261,7 +262,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(650);
         $bien->setCategorie($caterorie4);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/64.03.60.jpg');
+        $bien->setImage('64.03.60.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -272,7 +273,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(200000);
         $bien->setCategorie($caterorie4);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/44 22 AN 08.jpg');
+        $bien->setImage('4422AN08.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -283,7 +284,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(1500000);
         $bien->setCategorie($caterorie4);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/34VI6979.jpg');
+        $bien->setImage('34VI6979.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -294,7 +295,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(1490000);
         $bien->setCategorie($caterorie4);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/34AG10897.jpg');
+        $bien->setImage('34AG10897.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -305,7 +306,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(2000);
         $bien->setCategorie($caterorie5);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/30VI9700.jpg');
+        $bien->setImage('30VI9700.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -316,7 +317,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(950);
         $bien->setCategorie($caterorie5);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/19.07.118.jpg');
+        $bien->setImage('19.07.118.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -327,7 +328,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(-1);
         $bien->setCategorie($caterorie5);
         $bien->setTypeBien('Location');
-        $bien->setImage('../../public/55VS.jpg');
+        $bien->setImage('55VS.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -338,7 +339,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(173440);
         $bien->setCategorie($caterorie5);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/MQ14170356 .jpg');
+        $bien->setImage('MQ14170356 .jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -349,7 +350,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(330000);
         $bien->setCategorie($caterorie5);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/17.03.017.jpg');
+        $bien->setImage('17.03.017.jpg');
         $manager->persist($bien);
 
         $bien = new Biens();
@@ -360,7 +361,7 @@ class AppFixtures extends Fixture
         $bien->setPrixBien(-1);
         $bien->setCategorie($caterorie5);
         $bien->setTypeBien('Vente');
-        $bien->setImage('../../public/AA 72 22 0088 RB.jpg');
+        $bien->setImage('AA72220088RB.jpg');
         $manager->persist($bien);
 
         $manager->flush();
