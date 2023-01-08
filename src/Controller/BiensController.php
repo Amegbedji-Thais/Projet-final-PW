@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Biens;
+use App\Form\SearchForm;
 use App\Repository\BiensRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,17 +32,20 @@ class BiensController extends AbstractController
         ]);
     }
 
-    /**
+
     #[Route('/biens', name: 'app_bienssearch')]
-    public function indexsearch(BiensRepository $repository): Response
+    public function indexsearch(BiensRepository $repository, Request $request): Response
     {
-       //$data = new SearchData();
+       $data = new SearchData();
+       $form = $this->createForm(SearchForm::class, $data);
+       $form->handleRequest($request);
        $biens = $repository->findSearch();
         return $this->render('biens/biens.html.twig', [
-            'biens' => $biens
+            'biens' => $biens,
+            'form' => $form->createView()
         ]);
     }
-    */
+
 
     #[Route('/details', name: 'app_details')]
     public function ind(): Response

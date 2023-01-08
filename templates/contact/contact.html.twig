@@ -75,16 +75,16 @@
                                 <h2>Nous contacter</h2>
                             </div>
                             <div class="form-inner">
-                                <form method="post" action="sendemail.php" id="contact-form">
+                                <form method="post" action="{{ path ("app_mailingcont") }}" id="contact-form">
                                     <div class="row clearfix">
                                         <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                            <input type="text" name="username" placeholder="Votre nom" required="">
+                                            <input type="text" name="nom" placeholder="Votre nom" required="">
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                                             <input type="email" name="email" placeholder="Email" required="">
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                            <input type="text" name="phone" placeholder="Téléphone" required="">
+                                            <input type="text" name="telephone" placeholder="Téléphone" required="">
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                                             <input type="text" name="subject" placeholder="Sujet" required="">

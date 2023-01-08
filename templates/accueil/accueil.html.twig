@@ -24,51 +24,18 @@
             <div class="auto-container">
                 <div class="inner-container wow slideInLeft animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <ul class="category-list clearfix">
+                        {% for categorie in categories %}
+
                         <li>
                             <div class="category-block-one">
                                 <div class="inner-box">
                                     <div class="icon-box"><i class="icon-1"></i></div>
-                                    <h5><a href="terrains">Terres agricoles</a></h5>
-                                    <span>52</span>
+                                    <h5><a href="{{ path ('app_cat_biens', {'name' : categorie.titrecat}) }}">{{categorie.titrecat}}</a></h5>
+                                    <span>{{ categorie.biens | length }}</span>
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <div class="category-block-one">
-                                <div class="inner-box">
-                                    <div class="icon-box"><i class="icon-2"></i></div>
-                                    <h5><a href="prairies">Prairies</a></h5>
-                                    <span>20</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="category-block-one">
-                                <div class="inner-box">
-                                    <div class="icon-box"><i class="icon-3"></i></div>
-                                    <h5><a href="bois">Bois</a></h5>
-                                    <span>35</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="category-block-one">
-                                <div class="inner-box">
-                                    <div class="icon-box"><i class="icon-4"></i></div>
-                                    <h5><a href="batiment">Bâtiments</a></h5>
-                                    <span>10</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="category-block-one">
-                                <div class="inner-box">
-                                    <div class="icon-box"><i class="icon-5"></i></div>
-                                    <h5><a href="exploitation">Exploitations</a></h5>
-                                    <span>27</span>
-                                </div>
-                            </div>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -85,106 +52,33 @@
                     <p>Vous avez accès ici à quelques biens ainsi que leurs caractéristiques <br />et les propriétaires respectifs de ces biens</p>
                 </div>
                 <div class="row clearfix">
-                    <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
-                        <div class="feature-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="assets/images/image1.jpg" alt=""></figure>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="author-info clearfix">
-                                        <div class="author pull-left">
-                                            <figure class="author-thumb"><img src="assets/images/image1.jpg" alt=""></figure>
-                                            <h6>Michel Bert</h6>
+                        {% for bien in biens %}
+                            <div class="col-lg-3 col-md-6 col-sm-12 feature-block">
+                                <div class="feature-block-one">
+                                    <div class="inner-box">
+                                        <div class="image-box">
+                                            <figure class="image"><img src="assets/images/image8.jpg" alt=""></figure>
                                         </div>
-                                        <div class="buy-btn pull-right"><a href="property-details.html">A vendre</a></div>
-                                    </div>
-                                    <div class="title-text"><h4><a href="property-details.html">Bâtiment </a></h4></div>
-                                    <div class="price-box clearfix">
-                                        <div class="price-info pull-left">
-                                            <h6>A partir de</h6>
-                                            <h4>500.000 €</h4>
+                                        <div class="lower-content">
+                                            <div class="title-text"><h4>{{ bien.titrebien }}</h4></div>
+                                            <div class="price-box clearfix">
+                                                <div class="price-info pull-left">
+                                                    <h4>{{ bien.prixbien }}€</h4>
+                                                </div>
+                                                <ul class="other-option pull-right clearfix">
+                                                    <li><a href="{{ path('app_lesfavoris', {'id': bien.id}) }}"><i class="icon-13"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <p>{{ bien.descriptionbien }}</p>
+                                            <ul class="more-details clearfix">
+                                                <li>{{ bien.surfacebien }}</li>
+                                            </ul>
+                                            <div class="btn-box"><a href="details" class="theme-btn btn-two">Voir les détails</a></div>
                                         </div>
-                                        <ul class="other-option pull-right clearfix">
-                                            <li><a><i class="icon-13"></i></a></li>
-                                        </ul>
                                     </div>
-                                    <p>Le bâtiment est situé au centre ville de Rennes. Il a été construit en 1990 .</p>
-                                    <ul class="more-details clearfix">
-                                        <li><i class="icon-14"></i>3 ch.</li>
-                                        <li><i class="icon-15"></i>2 sdb</li>
-                                        <li><i class="icon-16"></i>200 m²</li>
-                                    </ul>
-                                    <div class="btn-box"><a href="property-details.html" class="theme-btn btn-two">Voir les détails</a></div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
-                        <div class="feature-block-one wow fadeInUp animated" data-wow-delay="300ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="assets/images/image2.jpg" alt=""></figure>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="author-info clearfix">
-                                        <div class="author pull-left">
-                                            <figure class="author-thumb"><img src="assets/images/image2.jpg" alt=""></figure>
-                                            <h6>Jessica Niro</h6>
-                                        </div>
-                                        <div class="buy-btn pull-right"><a href="property-details.html">A louer</a></div>
-                                    </div>
-                                    <div class="title-text"><h4><a href="property-details.html">Villa</a></h4></div>
-                                    <div class="price-box clearfix">
-                                        <div class="price-info pull-left">
-                                            <h6>A partir de</h6>
-                                            <h4>2.500 €</h4>
-                                        </div>
-                                        <ul class="other-option pull-right clearfix">
-                                            <li><a href="favoris"><i class="icon-13"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <p>La villa est une maison située à l'Ouest de Paris. Elle a été construite en 2007.</p>
-                                    <ul class="more-details clearfix">
-                                        <li><i class="icon-14"></i>2 ch.</li>
-                                        <li><i class="icon-15"></i>2 sdb</li>
-                                        <li><i class="icon-16"></i>100 m²</li>
-                                    </ul>
-                                    <div class="btn-box"><a href="property-details.html" class="theme-btn btn-two">Voir les détails</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
-                        <div class="feature-block-one wow fadeInUp animated" data-wow-delay="600ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="assets/images/image3.jpg" alt=""></figure>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="author-info clearfix">
-                                        <div class="author pull-left">
-                                            <figure class="author-thumb"><img src="assets/images/image3.jpg" alt=""></figure>
-                                            <h6>Selena Bel</h6>
-                                        </div>
-                                        <div class="buy-btn pull-right"><a>Vendu</a></div>
-                                    </div>
-                                    <div class="title-text"><h4><a href="property-details.html">Terrain agricole</a></h4></div>
-                                    <div class="price-box clearfix">
-                                        <div class="price-info pull-left">
-                                            <h6>A paritr de</h6>
-                                            <h4>150.500 €</h4>
-                                        </div>
-                                        <ul class="other-option pull-right clearfix">
-                                            <li><a href="property-details.html"><i class="icon-13"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <p>Cet terrain agricole a une superficie de 20ha.</p>
-                                    <div class="btn-box"><a href="property-details.html" class="theme-btn btn-two">Voir les détails</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        {% endfor %}
                 </div>
             </div>
         </section>
