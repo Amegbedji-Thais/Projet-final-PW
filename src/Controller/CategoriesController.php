@@ -22,11 +22,10 @@ class CategoriesController extends AbstractController
 
     }
 
-     #[Route("/category/biens/{name}", name:'app_cat_biens')]
+    #[Route("/category/biens/{name}", name:'app_cat_biens')]
 
     public function listeBiensParNom($name, CategoriesRepository $categoriesRepository): Response
     {
-
         $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie'=> $categoriesRepository->findOneBy(array('titre_cat' => $name))->getId()]);
         return $this->render('categories/details.html.twig', [
             'biens' => $biens,
@@ -34,12 +33,13 @@ class CategoriesController extends AbstractController
         ]);
     }
 
-    /**public function listeBiensParNom(Categories $categories): Response
+    /*public function listeBiensParNom(Categories $categories): Response
     {
         dd($categories);
         $biens = $this->entityManager->getRepository(Biens::class)->findBy(['categorie'=> 1]);
         return $this->render('categories/details.html.twig', [
             'biens' => $biens,
+            'name' => $name
         ]);
     }*/
 

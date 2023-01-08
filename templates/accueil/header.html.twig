@@ -29,6 +29,7 @@
 <!-- end switcher menu -->
 
 <!-- main header -->
+{% block content %}
 <header class="main-header">
     <!-- header-top -->
     <div class="header-top">
@@ -73,11 +74,11 @@
                                 <li><a href="{{ path ('app_biens') }}"><span>Biens</span></a></li>
                                 <li class="dropdown"><a href="{{ path ('app_accueil') }}"><span>Catégories</span></a>
                                     <ul>
-                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Terrains Agricoles'}) }}">Terrains agricoles</a></li>
-                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Prairies'}) }}">Prairies</a></li>
-                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Bois'}) }}">Bois</a></li>
-                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Batiments'}) }}">Bâtiments</a></li>
-                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Exploitations'}) }}">Exploitations</a></li>
+                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Terrains Agricoles' }) }}">Terrains agricoles</a></li>
+                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Prairies' }) }}">Prairies</a></li>
+                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Bois' }) }}">Bois</a></li>
+                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Batiments' }) }}">Bâtiments</a></li>
+                                        <li><a href="{{ path ('app_cat_biens', {'name' : 'Exploitations' }) }} ">Exploitations</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{ path ('app_favoris') }}"><span>Favoris</span></a></li>
@@ -91,6 +92,5 @@
     </div>
 
 </header>
+{% endblock %}
 <!-- main-header end -->
-
-{% block content %}{% endblock %}

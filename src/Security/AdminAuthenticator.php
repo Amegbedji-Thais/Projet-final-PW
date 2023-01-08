@@ -33,7 +33,7 @@ class AdminAuthenticator extends AbstractLoginFormAuthenticator
 
         return new Passport(
             new UserBadge($emailAdm),
-            new PasswordCredentials($request->request->get('password', '')),
+            new PasswordCredentials($request->request->get('mdp_adm', '')),
             [
                 new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
             ]
@@ -46,9 +46,7 @@ class AdminAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // For example:
-        // return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        return new RedirectResponse($this->urlGenerator->generate('admin'));
     }
 
     protected function getLoginUrl(Request $request): string

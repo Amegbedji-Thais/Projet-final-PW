@@ -31,8 +31,11 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $mdp_adm = null;
 
-    #[ORM\ManyToMany(targetEntity: biens::class, inversedBy: 'adm_id')]
+    #[ORM\ManyToMany(targetEntity: Biens::class, inversedBy: 'adm_id')]
     private Collection $bien_id;
+
+    #[ORM\Column(length: 60)]
+    private ?string $roles = null;
 
     public function __construct()
     {
@@ -93,14 +96,16 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPassword(): ?string
-    {
-        // TODO: Implement getPassword() method.
-    }
-
     public function getRoles(): array
     {
-        // TODO: Implement getRoles() method.
+        return $this->roles;
+    }
+
+    public function setRoles(string $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 
     public function eraseCredentials()
@@ -110,7 +115,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getUserIdentifier(): string
     {
-        // TODO: Implement getUserIdentifier() method.
+        return "";// TODO: Implement getUserIdentifier() method.
     }
 
     /**
@@ -135,5 +140,10 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         $this->bien_id->removeElement($bienId);
 
         return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->mdp_adm; // TODO: Implement getPassword() method.
     }
 }
