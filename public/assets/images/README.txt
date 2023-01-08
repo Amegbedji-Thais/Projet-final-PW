@@ -1,1 +1,0 @@
-Les photos disponibles sont toutes là ...si il n'y a pas de photos, c'est à vous de le gérer :)

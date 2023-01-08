@@ -21,12 +21,12 @@ class Favoris
     #[ORM\Column]
     private ?bool $send = null;
 
-    #[ORM\ManyToMany(targetEntity: biens::class, inversedBy: 'favori_id')]
-    private Collection $bien_id;
+    #[ORM\ManyToOne(targetEntity: Biens::class, inversedBy: 'favori_id')]
+    private Biens $bien;
 
     public function __construct()
     {
-        $this->bien_id = new ArrayCollection();
+        //$this->bien_id = new ArrayCollection();
     }
 
     public function getId(): ?int

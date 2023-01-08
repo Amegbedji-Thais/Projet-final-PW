@@ -24,31 +24,12 @@
                         </div>
                         <div class="widget-content">
                             <ul class="links-list class">
-                                <li><a href="accueil">Accueil</a></li>
-                                <li><a href="accueil">Biens</a></li>
-                                <li><a href="accueil">Catégories</a></li>
-                                <li><a href="accueil">Favoris</a></li>
-                                <li><a href="accueil">Contact</a></li>
+                                <li><a href="{{ path ('app_accueil') }}">Accueil</a></li>
+                                <li><a href="{{ path ('app_biens') }}">Biens</a></li>
+                                <li><a href="categories">Catégories</a></li>
+                                <li><a href="{{ path ('app_favoris') }}">Favoris</a></li>
+                                <li><a href="{{ path ('app_contact') }}">Contact</a></li>
                             </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                    <div class="footer-widget post-widget">
-                        <div class="widget-title">
-                            <h3>Les plus récents</h3>
-                        </div>
-                        <div class="post-inner">
-                            <div class="post">
-                                <figure class="post-thumb"><a href="blog-details.html"><img src="assets/images/image5.jpg" alt=""></a></figure>
-                                <h5><a href="blog-details.html">Bâtiment</a></h5>
-                                <p>3 Janvier 2023</p>
-                            </div>
-                            <div class="post">
-                                <figure class="post-thumb"><a href="blog-details.html"><img src="assets/images/image4.jpg" alt=""></a></figure>
-                                <h5><a href="blog-details.html">Exploitation</a></h5>
-                                <p>3 Janvier 2023</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,11 +55,11 @@
             <div class="inner-box clearfix">
 
                 <div class="copyright pull-left">
-                    <p><a href="accueil">Safer</a> &copy; 2023 Tous droits réservés</p>
+                    <p><a href="{{ path ('app_accueil') }}">Safer</a> &copy; 2023 Tous droits réservés</p>
                 </div>
                 <ul class="footer-nav pull-right clearfix">
-                    <li><a href="accueil">SAFER immobilier</a></li>
-                    <li><a href="accueil">Par SAFER</a></li>
+                    <li><a href="{{ path ('app_accueil') }}">SAFER immobilier</a></li>
+                    <li><a href="{{ path ('app_accueil') }}">Par SAFER</a></li>
                 </ul>
             </div>
         </div>
