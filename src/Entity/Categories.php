@@ -32,14 +32,6 @@ class    Categories
         return $this->id;
     }
 
-
-    public function setEmailFav(string $email_fav): self
-    {
-        $this->email_fav = $email_fav;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Biens>
      */
