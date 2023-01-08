@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/admin/bien", name="admin.bien")
  * @package App\Controller\Admin
  */
+#[Route(path: '/admin/bien', name: 'admin.bien')]
 class AdminBienController extends AbstractController
 {
     /**
@@ -34,9 +35,7 @@ class AdminBienController extends AbstractController
     }
 
 
-    /**
-     * @Route("/admin", name="home")
-     */
+    #[Route(path: '/admin', name: 'home')]
     public function index(BienRepository $bienRepo)
     {
         return $this->render('admin/bien/index.html.twig', [
@@ -44,9 +43,8 @@ class AdminBienController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/ajout", name="admin.bien.ajout", methods="GET|POST")
-     */
+
+    #[Route(path: 'admin/ajout', name: 'admin.bien.ajout')]
     public function ajoutBien(Request $request)
     {
         $bien = new Bien;
@@ -68,9 +66,7 @@ class AdminBienController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("admin/modifier/{id}", name="admin.bien.modifier")
-     */
+    #[Route(path: 'admin/modifier/{id}', name: 'admin.bien.modifier')]
     public function ModifCategorie(Bien $bien, Request $request)
     {
         $form = $this->createForm(BienType::class, $bien);
