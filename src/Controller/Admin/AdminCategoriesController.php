@@ -2,9 +2,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Bien;
+use App\Form\BienType;
 use App\Repository\BienRepository;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -16,16 +19,26 @@ class AdminCategoriesController extends AbstractController
     /**
      * @var BienRepository
      */
-    private $repository;
-
+    private BienRepository $repository;
 
     /**
-     * @Route("/", name="home")
+     * @var ObjectManager
+     */
+    private ObjectManager $em;
+
+    public function __construct(BienRepository $repository, ObjectManager $em)
+    {
+        $this -> repository = $repository;
+        $this -> em = $em;
+    }
+
+    /**
+     * @Route("/admin", name="home")
      */
     public function index(BienRepository $bienRepo)
     {
-        return $this->render('admin/categories/index.html.twig', [
-            'controller_name' => 'CategoriesController'
+        return $this->render('admin/bien/index.html.twig', [
+            'bien' => $bienRepo->findAll()
         ]);
     }
 
@@ -45,10 +58,10 @@ class AdminCategoriesController extends AbstractController
             $em->persist($bien);
             $em->flush();
 
-            return $this->redirectToRoute('admin_categories_home');
+            return $this->redirectToRoute('admin.bien.index');
         }
 
-        return $this->render('admin/categories/ajout.html.twig', [
+        return $this->render('admin/bien/ajout.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -58,7 +71,7 @@ class AdminCategoriesController extends AbstractController
      */
     public function ModifCategorie(Bien $bien, Request $request)
     {
-        $form = $this->createForm(CategoriesType::class, $bien);
+        $form = $this->createForm(BienType::class, $bien);
 
         $form->handleRequest($request);
 
@@ -67,10 +80,10 @@ class AdminCategoriesController extends AbstractController
             $em->persist($bien);
             $em->flush();
 
-            return $this->redirectToRoute('admin_categories_home');
+            return $this->redirectToRoute('admin.bien.index');
         }
 
-        return $this->render('admin/categories/ajout.html.twig', [
+        return $this->render('admin/bien/ajout.html.twig', [
             'form' => $form->createView()
         ]);
     }

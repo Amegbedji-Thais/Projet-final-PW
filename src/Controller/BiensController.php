@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class BiensController extends AbstractController
 {
     /**
-     * @Route("/biens", name="app_biens")
+     * @Route("/bien", name="app_biens")
      */
     public function index(): Response
     {
-        return $this->render('biens/index.html.twig', [
+        return $this->render('bien/index.html.twig', [
             'controller_name' => 'BiensController',
         ]);
     }

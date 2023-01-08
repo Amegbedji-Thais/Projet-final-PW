@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Bien;
+use App\Entity\Categorie;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +20,13 @@ class BienType extends AbstractType
             ->add('Prix_Bien')
             ->add('Localisation_Bien')
             ->add('Description_Bien')
-            ->add('id_Cat')
+            ->add('id_Cat', EntityType::class, [
+                'class' =>Categorie::class,
+                'choice_label' => 'titre_cat',
+                'multiple' => false,
+                'expanded' => false,
+                'required' => true
+            ])
             ->add('id_Fav')
         ;
     }
