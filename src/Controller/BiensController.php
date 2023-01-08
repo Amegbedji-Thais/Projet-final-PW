@@ -33,6 +33,7 @@ class BiensController extends AbstractController
     }
 
 
+
     #[Route('/biens', name: 'app_bienssearch')]
     public function indexsearch(BiensRepository $repository, Request $request): Response
     {
@@ -47,12 +48,14 @@ class BiensController extends AbstractController
     }
 
 
-    #[Route('/details', name: 'app_details')]
-    public function ind(): Response
+    #[Route('/details/{id}', name: 'app_details')]
+    public function ind($id, BiensRepository $biensRepository): Response
     {
         //$biens = $this->entityManager->getRepository(Biens::class)->findAll();
+        // $biens = $this->entityManager->getRepository(Biens::class)->findBy(['bien'=> $biensRepository->find($id)]);
+         $bien = $biensRepository->find($id);
         return $this->render('biens/details.html.twig', [
-            'controller_name' => 'BiensController',
+            'bien' => $bien
         ]);
     }
 }
