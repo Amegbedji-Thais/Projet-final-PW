@@ -19,6 +19,11 @@ class AppFixtures extends Fixture
         $this->encoder = $encoder;
     }
 
+    /*La méthode load de fixtures permet d'ajouter à la bdd des entités créées sur symfony.
+     * Elle permet ici d'alimenter avec des entités de base, la base de données.
+     * Pour chaque entité que l'on souhaite ajouter, on crée une nouvelle instance, puis on définit chacun des champs.
+     * On appel la méthode persit pour l'ajouter et créer la requête, avant de flush pour exécuter.
+    */
     public function load(ObjectManager $manager): void
     {
         $caterorie1 = new Categories();

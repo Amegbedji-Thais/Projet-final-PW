@@ -41,51 +41,23 @@ class BiensRepository extends ServiceEntityRepository{
         }
     }
 
-
-    /**
-     * Récupère les produits en lien avec une recherche
-     * @return Biens[]
-     */
-    /*public function findSearch(SearchData $search):array {
-        $query = $this
-            ->createQueryBuilder('p')
-            ->select('c','p')
-            ->join('p.categories', 'c');
-
-        if(!empty($search->q)){
-            $query = $query
-                ->andWhere('p.name LIKE :q')
-                ->setParameter('q', "%{$search->q}%");
-        }
-
-        if(!empty($search->min)){
-            $query = $query
-                ->andWhere('p.prixbien >= :min')
-                ->setParameter('min', $search->min);
-        }
-
-        if(!empty($search->max)){
-            $query = $query
-                ->andWhere('p.prixbien <= :max')
-                ->setParameter('max', $search->max);
-        }
-
-        return $query->getQuery()->getResult();
-    }*/
-
     /**
      * Récupère les produits en lien avec une recherche
      * @return Biens[]
      */
     public function searchBiens($search):array {
+        //Je crée une requête à l'aide de créate builder qui sait dans quelle entité nous nous trouvons.
         $query = $this->createQueryBuilder('b')
+            //J'ajoute une champs, ici catégorie que j'alias en q.
             ->join('b.categorie', 'q')
+            //J'ajoute un critère de recheche.
             ->where('q = :catTitre')
+            //Je définis le paramètre, cela permet d'éviter les injections sql.
             ->setParameter(':catTitre', $search->getCategorie()->getId())
             ->andWhere('b.type_bien = :typeB')
             ->setParameter(':typeB', $search->getTypeBien())
         ;
-
+        //Je crée et exécute la requête.
         return $query->getQuery()->getResult();
     }
 
