@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Admin;
 use App\Entity\Biens;
+use App\Entity\Categories;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -23,14 +24,14 @@ class BiensType extends AbstractType
             ->add('description_bien', TextareaType::class, ['required' => false])
             ->add('image')
             ->add('categorie',EntityType::class, [
-                'class' =>Categorie::class,
+                'class' =>Categories::class,
                 'choice_label' => 'titre_cat',
                 'multiple' => false,
                 'expanded' => false,
                 'required' => true
             ])
             ->add('adm_id', EntityType::class, [
-                'class' => Admin::class,
+                'class' => Admin::class
             ])
         ;
     }
