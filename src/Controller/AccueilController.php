@@ -12,7 +12,7 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class AccueilController extends AbstractController
 {
-    #[Route('/accueil', name: 'app_accueil')]
+    #[Route('/', name: 'app_accueil')]
     public function index(CategoriesRepository $categoriesRepository, ManagerRegistry $managerRegistry): Response
     {
         // Récupérer toutes les catégories de la base de données sur CategoriesRepository
