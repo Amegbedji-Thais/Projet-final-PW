@@ -27,13 +27,17 @@ class AccueilController extends AbstractController
 
         // Exécuter la requête et récupérer les résultats
         $result = $statement->execute()->fetchAll();
+
+        // Tableau devant contenir les biens
         $biens = [];
 
-
+        // Pour chaque bien récupéré
         foreach ($result as $key => $value) {
 
+            // Initialiser un nouveau bien
             $bien = new Biens();
 
+            // Donner les caractéristiques de biens de la bdd
             $bien->setId($value['id']);
 
             $bien->setImage($value['image']);
@@ -50,11 +54,15 @@ class AccueilController extends AbstractController
 
             $bien->setDescriptionBien($value['description_bien']);
 
+            // Récupérer la catégorie du bien par le CategoriesRepository
             $bien->setCategorie($categoriesRepository->findOneBy(array('id' => $value['categorie_id'])));
 
+            // Ajouter le bien dans le tableau précédemment initialisé
             $biens[] = $bien;
 
         }
+
+        // Retourner la vue 'accueil/accueil.html.twig' avec comme paramètres 'categories' et 'biens'
         return $this->render('accueil/accueil.html.twig', [
             'categories' => $categories,
             'biens' => $biens
