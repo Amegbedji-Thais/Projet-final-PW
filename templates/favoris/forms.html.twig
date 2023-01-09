@@ -1,0 +1,47 @@
+{% extends 'layout/layout.html.twig' %}
+
+
+
+    {% block content %}
+
+
+
+
+
+
+        <div class="container my-4">
+
+
+
+            {{ form_start(form) }}
+
+
+
+            <div class="input-group mb-3">
+
+                {{ form_widget(form.mail_fav, {'attr': {'class': 'form-control' }} ) }}
+
+                <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+
+                <div class="input-group-append">
+
+
+                    <button class="btn btn-secondary" type="submit">Soumettre</button>
+
+                </div>
+
+            </div>
+
+            <button class="btn">
+
+            </button>
+
+            {{ form_end(form) }}
+
+        </div>
+
+    {% endblock %}
+
+
+
+

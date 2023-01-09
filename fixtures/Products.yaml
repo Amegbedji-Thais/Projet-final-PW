@@ -1,0 +1,11 @@
+App\Entity\Biens:
+  biens_{1...100}:
+    name: <bienName()>
+    price: <numberBetween(100,100000000)
+    description: <text(100)>
+    image: http://picsum.photos/id/<numberBetween(400, 800)>/290/180
+    categories: '<numberBetween(1,5)>x @category_*'
+
+    App\Entity\Biens:
+      categories_{1...5}:
+        name: <categorieName()>

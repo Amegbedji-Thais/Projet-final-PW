@@ -1,0 +1,89 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block content %}
+
+
+
+    <!--Page Title-->
+    <section class="page-title-two bg-color-1 centred">
+        <div class="pattern-layer">
+            <div class="pattern-1" style="background-image: url(assets/images/shape/shape-9.png);"></div>
+            <div class="pattern-2" style="background-image: url(assets/images/shape/shape-10.png);"></div>
+        </div>
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h1>Détails</h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{ path ("app_accueil") }}">Accueil</a></li>
+                    <li>Détails</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+
+    <!-- property-details -->
+    <section class="property-details property-details-one">
+            <div class="top-details clearfix">
+                <div class="left-column pull-left clearfix">
+                    <div class="image-box">
+                        <figure class="image"><img src={{ asset('assets/images/' ~ bien.image)}} alt=""></figure>
+                    </div>
+                        <h3>{{ bien.titrebien }}</h3>
+                        <div class="right-column pull-right clearfix">
+                            <div class="price-inner clearfix">
+                                <ul class="category clearfix pull-left">
+                                    <li><a >{{ bien.typebien }}</a></li>
+                                </ul>
+                                <div class="price-box pull-right">
+                                    <h3>{{ bien.prixbien }}€</h3>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    <div class="author-info clearfix">
+                        <ul class="rating clearfix pull-left">
+                            <li><i class="icon-39"></i></li>
+                            <li><i class="icon-39"></i></li>
+                            <li><i class="icon-39"></i></li>
+                            <li><i class="icon-39"></i></li>
+                            <li><i class="icon-40"></i></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+                    <div class="property-details-content">
+
+                        <div class="discription-box content-widget">
+                            <div class="title-box">
+                                <h4>Description</h4>
+                            </div>
+                            <div class="text">
+                                <p>{{ bien.descriptionbien }}</p>
+                            </div>
+                        </div>
+                        <div class="location-box content-widget">
+                            <div class="title-box">
+                                <h4>Localisation</h4>
+                            </div>
+                            <div class="text">
+                                <p>{{ bien.localisationbien }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- property-details end -->
+
+
+{% endblock %}

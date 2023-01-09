@@ -1,0 +1,195 @@
+
+{% extends 'layout/layout.html.twig' %}
+
+    {% block content %}
+
+
+        <!-- banner-section -->
+        <section class="banner-section" style="background-image: url(assets/images/verdure.jpg);">
+            <div class="auto-container">
+                <div class="inner-container">
+                    <div class="content-box centred">
+                        <h2>Trouvez votre bonheur chez SAFER</h2>
+                        <p>SAFER - vente et location de biens immobiliers</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- banner-section end -->
+
+
+        <!-- category-section -->
+        <section class="category-section centred">
+            <div class="auto-container">
+                <div class="inner-container wow slideInLeft animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                    <ul class="category-list clearfix">
+                        {% for categorie in categories %}
+
+                        <li>
+                            <div class="category-block-one">
+                                <div class="inner-box">
+                                    <div class="icon-box"><i class="icon-1"></i></div>
+                                    <h5><a href="{{ path ('app_cat_biens', {'name' : categorie.titrecat}) }}">{{categorie.titrecat}}</a></h5>
+                                    <span>{{ categorie.biens | length }}</span>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- category-section end -->
+
+
+        <!-- feature-section -->
+        <section class="feature-section sec-pad bg-color-1">
+            <div class="auto-container">
+                <div class="sec-title centred">
+                    <h5>Quelques biens</h5>
+                    <h2>Biens et caractéristiques</h2>
+                    <p>Vous avez accès ici à quelques biens ainsi que leurs caractéristiques <br />et les propriétaires respectifs de ces biens</p>
+                </div>
+                <div class="row clearfix">
+                        {% for bien in biens %}
+                            <div class="col-lg-3 col-md-6 col-sm-12 feature-block">
+                                <div class="feature-block-one">
+                                    <div class="inner-box">
+                                        <div class="image-box">
+
+                                            <span class="category">{{ bien.typebien }}</span>
+
+                                            <figure class="image"><img src={{ asset('assets/images/' ~ bien.image)}} alt=""></figure>
+
+                                        </div>
+                                        <div class="lower-content">
+                                            <div class="title-text"><h4>{{ bien.titrebien }}</h4></div>
+                                            <div class="price-box clearfix">
+                                                <div class="price-info pull-left">
+                                                    <h4>{{ bien.prixbien }}€</h4>
+                                                </div>
+                                                <ul class="other-option pull-right clearfix">
+                                                    <li><a href="{{ path('app_lesfavoris', {'id': bien.id}) }}"><i class="icon-13"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <p>{{ bien.descriptionbien }}</p>
+                                            <ul class="more-details clearfix">
+                                                <li>{{ bien.surfacebien }}</li>
+                                            </ul>
+                                            <div class="btn-box"><a href="{{ path('app_details',{'id': bien.getId() }) }}" class="theme-btn btn-two">Voir les détails</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- feature-section end -->
+
+
+
+        <!-- testimonial-section end -->
+        <section class="testimonial-section bg-color-1 centred">
+            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-1.png);"></div>
+            <div class="auto-container">
+                <div class="sec-title">
+                    <h5>Témoignages</h5>
+                    <h2>Ce Qu'On Dit De Nous</h2>
+                </div>
+                <div class="single-item-carousel owl-carousel owl-theme owl-dots-none nav-style-one">
+                    <div class="testimonial-block-one">
+                        <div class="inner-box">
+                            <div class="text">
+                                <p>Avec SAFER, j'ai réussi à acheter la maison de mes rêves à un prix qui me convenait. Les propriétaires sont chaleureux et très gentils. Je ne regrette pas d'avoir fait appel à la SAFER.</p>
+                            </div>
+                            <div class="author-info">
+                                <h4>Rebecca James</h4>
+                                <span class="designation">Commerciale</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-block-one">
+                        <div class="inner-box">
+                            <div class="text">
+                                <p>J'ai contacté la SAFER quand je voulais mettre en vente des terrains agricoles. Le service était au top, j'ai très vite trouvé des clients et les ventes ont été effectuées rapidement.</p>
+                            </div>
+                            <div class="author-info">
+                                <h4>Marc Kenneth</h4>
+                                <span class="designation">Ingénieur</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-block-one">
+                        <div class="inner-box">
+                            <div class="text">
+                                <p>Notre objectif est de veiller à ce que nos clients (vendeurs et acheteurs) soient pleinement satisfaits de nos prestations. Pour cela, nous mettons tout en oeuvre pour leur fournir un service impeccable.</p>
+                            </div>
+                            <div class="author-info">
+                                <h4>Pierre Hervé</h4>
+                                <span class="designation">Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- testimonial-section end -->
+
+
+        <!-- chooseus-section -->
+        <section class="chooseus-section">
+            <div class="auto-container">
+                <div class="inner-container bg-color-2">
+                    <div class="upper-box clearfix">
+                        <div class="sec-title light">
+                            <h5>Pourquoi nous choisir?</h5>
+                            <h2>Les raisons qui font de nous le meilleur choix</h2>
+                        </div>
+                    </div>
+                    <div class="lower-box">
+                        <div class="row clearfix">
+                            <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
+                                <div class="chooseus-block-one">
+                                    <div class="inner-box">
+                                        <div class="icon-box"><i class="icon-19"></i></div>
+                                        <h4>Une excellente réputation</h4>
+                                        <p>Elue meilleure agence immobilière en 2021.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
+                                <div class="chooseus-block-one">
+                                    <div class="inner-box">
+                                        <div class="icon-box"><i class="icon-26"></i></div>
+                                        <h4>Les meilleurs agentd</h4>
+                                        <p>Un personnel très dévoué.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
+                                <div class="chooseus-block-one">
+                                    <div class="inner-box">
+                                        <div class="icon-box"><i class="icon-21"></i></div>
+                                        <h4>Des services personnalisés</h4>
+                                        <p>Les meilleurs services pour vous satisfaire.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- chooseus-section end -->
+
+
+        <!-- place-section -->
+        <section class="place-section sec-pad">
+            <div class="auto-container"></div>
+        </section>
+        <!-- place-section end -->
+
+
+    {% endblock %}

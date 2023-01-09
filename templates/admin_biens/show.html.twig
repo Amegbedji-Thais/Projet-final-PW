@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Biens{% endblock %}
+
+{% block body %}
+    <h1>Biens</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bien.id }}</td>
+            </tr>
+            <tr>
+                <th>Type_bien</th>
+                <td>{{ bien.typeBien }}</td>
+            </tr>
+            <tr>
+                <th>Titre_bien</th>
+                <td>{{ bien.titreBien }}</td>
+            </tr>
+            <tr>
+                <th>Surface_bien</th>
+                <td>{{ bien.surfaceBien }}</td>
+            </tr>
+            <tr>
+                <th>Prix_bien</th>
+                <td>{{ bien.prixBien }}</td>
+            </tr>
+            <tr>
+                <th>Localisation_bien</th>
+                <td>{{ bien.localisationBien }}</td>
+            </tr>
+            <tr>
+                <th>Description_bien</th>
+                <td>{{ bien.descriptionBien }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ bien.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_biens_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_biens_edit', {'id': bien.id}) }}">edit</a>
+
+    {{ include('admin_biens/_delete_form.html.twig') }}
+{% endblock %}
