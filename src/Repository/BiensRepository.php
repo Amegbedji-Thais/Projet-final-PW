@@ -54,7 +54,7 @@ class BiensRepository extends ServiceEntityRepository{
 
         if(!empty($search->q)){
             $query = $query
-            ->andWhere('p.name LIKE :q')
+                ->andWhere('p.name LIKE :q')
                 ->setParameter('q', "%{$search->q}%");
         }
 

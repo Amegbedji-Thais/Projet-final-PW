@@ -10,6 +10,7 @@ use App\Entity\Admin;
 
 class AppFixtures extends Fixture
 {
+    
     public function load(ObjectManager $manager): void
     {
         $caterorie1 = new Categories();
@@ -368,7 +369,7 @@ class AppFixtures extends Fixture
         $admin->setNomAdm('Admin');
         $admin->setPrenomAdm('Admin');
         $admin->setEmailAdm('admin@safer.fr');
-        $admin->setMdpAdm('$2y$13$BqAi9d2BLyNUih5uCPVhpeZ510ZTK3K1TD0zju91t/xtqHr2MHtDe');
+        $admin->setMdpAdm('$2y$13$TsJ.EWo7HA136WrG5DE1NOW/cemJkpJvMBkPEQVOT0GrBcwHCs2re');
         $admin->setRoles('["ROLE_ADMIN"]');
         $manager->persist($admin);
         //$2y$13$BqAi9d2BLyNUih5uCPVhpeZ510ZTK3K1TD0zju91t/xtqHr2MHtDe
