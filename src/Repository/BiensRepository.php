@@ -2,11 +2,11 @@
 
 namespace App\Repository;
 
-use App\Data\SearchData;
+use App\Controller\SearchController;
 use App\Entity\Biens;
-use App\Form\SearchForm;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Form\FormInterface;
 
 /**
  * @extends ServiceEntityRepository<Biens>
@@ -46,7 +46,7 @@ class BiensRepository extends ServiceEntityRepository{
      * Récupère les produits en lien avec une recherche
      * @return Biens[]
      */
-    public function findSearch(SearchData $search):array {
+    /*public function findSearch(SearchData $search):array {
         $query = $this
             ->createQueryBuilder('p')
             ->select('c','p')
@@ -54,7 +54,7 @@ class BiensRepository extends ServiceEntityRepository{
 
         if(!empty($search->q)){
             $query = $query
-            ->andWhere('p.name LIKE :q')
+                ->andWhere('p.name LIKE :q')
                 ->setParameter('q', "%{$search->q}%");
         }
 
@@ -69,6 +69,22 @@ class BiensRepository extends ServiceEntityRepository{
                 ->andWhere('p.prixbien <= :max')
                 ->setParameter('max', $search->max);
         }
+
+        return $query->getQuery()->getResult();
+    }*/
+
+    /**
+     * Récupère les produits en lien avec une recherche
+     * @return Biens[]
+     */
+    public function searchBiens($search):array {
+        $query = $this->createQueryBuilder('b')
+            ->join('b.categorie', 'q')
+            ->where('q = :catTitre')
+            ->setParameter(':catTitre', $search->getCategorie()->getId())
+            ->andWhere('b.type_bien = :typeB')
+            ->setParameter(':typeB', $search->getTypeBien())
+        ;
 
         return $query->getQuery()->getResult();
     }
