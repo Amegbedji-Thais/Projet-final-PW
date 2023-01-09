@@ -25,10 +25,6 @@ class SearchBiensType extends AbstractType
             ->add('surface_bien')
             ->add('prix_bien')
             ->add('localisation_bien')*/
-            ->add('prixMin', ChoiceType::class, [
-                'label' => 'Prix minimum'
-                'choices' =>
-            ])
             ->add('Categorie',EntityType::class, [
                 'class' =>Categories::class,
                 'choice_label' => 'titre_cat',

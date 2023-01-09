@@ -21,7 +21,7 @@ class FavorisController extends AbstractController
 {
     private $entityManager;
 
-
+    //Constructeur
     public function __construct(EntityManagerInterface $entityManager, FavorisRepository $favorisRepository)
     {
         $this->entityManager = $entityManager;
@@ -32,8 +32,12 @@ class FavorisController extends AbstractController
     #[Route('/favoris', name: 'app_favoris')]
     public function ind(Request $request): Response
     {
+        //Récupérer la session actuelle à partir de la requête et récupérer l'adresse email de l'utilisateur stockée dans la session
         $session = $request->getSession();
         $mailUser = $session->get('email');
+
+        //Si aucune adresse email n'est trouvée dans la session, l'utilisateur n'est pas connecté
+        // et un formulaire de connexion s'affiche
         if(!$mailUser){
             $favoris = new Favoris();
             $form = $this->createFormBuilder($favoris)
@@ -41,6 +45,8 @@ class FavorisController extends AbstractController
                 ->getForm();
 
             $form->handleRequest($request);
+            //Si l'utilisateur soumet le formulaire, l'adresse mail qu'il a entrée est enregistrée dans
+            // la session et utilisée pour récupérer ses favoris
             if($form->isSubmitted() && $form->isValid()){
                 $mailUser = $form->getData()->getMailFav();
                 $session->set('email', $mailUser);
@@ -51,6 +57,9 @@ class FavorisController extends AbstractController
                     'form' => $form,
                 ]);
             }
+
+            //S'il est déjà connecté, les favoris sont simplement récupérés depuis la bdd
+            // en utilisant l'adresse stockée dans la session
         }else{
             $favoris = $this->favorisRepository->findBy(array('mail_fav' => $mailUser, 'send' => false));
         }
@@ -88,10 +97,13 @@ class FavorisController extends AbstractController
     }
 
     public function addFav(Biens $biens, $mail_fav){
+        //Chercher si le bien est déjà dans la liste de favoris de l'utilisateur en utilisant la méthode findBy()
         $favoris = $this->favorisRepository->findBy(array('mail_fav'=>$mail_fav, 'bien'=> $biens->getId()));
+        //Si oui un message d'alerte est affiché
         if($favoris){
             $this->addFlash('danger','Vous avez deja ce bien en favoris');
         }
+        //Sinon ajouté le bien en favori et afficher un message pour le notifier à l'utilisateur
         else{
             $favoris = new Favoris();
             $favoris->setMailFav($mail_fav);
@@ -106,19 +118,27 @@ class FavorisController extends AbstractController
     }
 
     #[Route('/favoris/remove/{id}', name: 'app_lesfavorissup')]
-public function removeFav(Favoris $favoris){
+    //Retirer un bien des favoris
+    public function removeFav(Favoris $favoris){
         $this->addFlash('success','Bien supprimé avec succes');
         $this->favorisRepository->remove($favoris, true);
         return $this->redirectToRoute('app_favoris', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/laymail', name: 'app_mailing')]
+    //Envoyer les favoris par mail
     public function mailing(Request $request, MailerInterface $mailer){
+        //Récupérer la session à partir de la requête et de récupérer
+        // le mail de l'utilisateur dans la session
         $session = $request->getSession();
         $mailUser = $session->get('email');
+
+        //Si l'utilisateur est connecté, la fonction récupère la liste de favoris non envoyés de l'utilisateur
+        // en utilisant la méthode 'findBy'
         if($mailUser){
             $favoris = $this->favorisRepository->findBy(array('mail_fav' => $mailUser, 'send' => false));
             try {
+                //TemplatedEmail est créée et configurée avec les infos du mail à envoyer
                 $email = (new TemplatedEmail())
                     ->from('safer@mail.com')
                     ->to($mailUser)
@@ -131,12 +151,17 @@ public function removeFav(Favoris $favoris){
                     ])
                 ;
 
+                //La méthode send() de l'objet mailer est appelée pour envoyer l'e-mail
                 $mailer->send($email);
+
+
             }catch (\Throwable $th){
                 dd($th);
             }
         }
 
+        //Si aucun mail n'est trouvée dans la session, alors l'utilisateur n'est pas connecté
+        // et la fonction s'arrête
 
         return $this->redirectToRoute('app_favoris', [], Response::HTTP_SEE_OTHER);
     }

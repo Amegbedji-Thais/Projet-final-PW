@@ -14,11 +14,11 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $caterorie1 = new Categories();
-        $caterorie1->setTitreCat('Terrain agricole');
+        $caterorie1->setTitreCat('Terrains agricoles');
         $manager->persist($caterorie1);
 
         $caterorie2 = new Categories();
-        $caterorie2->setTitreCat('Prairie');
+        $caterorie2->setTitreCat('Prairies');
         $manager->persist($caterorie2);
 
         $caterorie3 = new Categories();
