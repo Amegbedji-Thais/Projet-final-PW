@@ -31,7 +31,7 @@ class BiensType extends AbstractType
                 'required' => true
             ])
             ->add('adm_id', EntityType::class, [
-                'class' => Admin::class,
+                'class' => Admin::class
             ])
         ;
     }
