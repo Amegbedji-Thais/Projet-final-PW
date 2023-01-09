@@ -12,15 +12,13 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
-<<<<<<< HEAD
+
 
     private UserPasswordHasherInterface $encoder;
     public function __construct(UserPasswordHasherInterface $encoder){
         $this->encoder = $encoder;
     }
-=======
-    
->>>>>>> 38798e02b77422f8b933ff88494ca4644c4a33bc
+
     public function load(ObjectManager $manager): void
     {
         $caterorie1 = new Categories();
@@ -376,17 +374,10 @@ class AppFixtures extends Fixture
         $manager->persist($bien);
 
         $admin = new Admin();
-<<<<<<< HEAD
         $admin->setNomAdm('demo');
         $admin->setPrenomAdm('dupont');
         $admin->setEmailAdm('dupont@safer.fr');
         $admin->setMdpAdm($this->encoder->hashPassword($admin, 'secret'));
-=======
-        $admin->setNomAdm('Admin');
-        $admin->setPrenomAdm('Admin');
-        $admin->setEmailAdm('admin@safer.fr');
-        $admin->setMdpAdm('$2y$13$TsJ.EWo7HA136WrG5DE1NOW/cemJkpJvMBkPEQVOT0GrBcwHCs2re');
->>>>>>> 38798e02b77422f8b933ff88494ca4644c4a33bc
         $admin->setRoles('["ROLE_ADMIN"]');
         $manager->persist($admin);
         $manager->flush();
