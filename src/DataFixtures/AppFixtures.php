@@ -7,9 +7,16 @@ use App\Entity\Categories;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Admin;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+
+    private UserPasswordHasherInterface $encoder;
+    public function __construct(UserPasswordHasherInterface $encoder){
+        $this->encoder = $encoder;
+    }
     public function load(ObjectManager $manager): void
     {
         $caterorie1 = new Categories();
@@ -365,17 +372,12 @@ class AppFixtures extends Fixture
         $manager->persist($bien);
 
         $admin = new Admin();
-        $admin->setNomAdm('Admin');
-        $admin->setPrenomAdm('Admin');
-        $admin->setEmailAdm('admin@safer.fr');
-        $admin->setMdpAdm('$2y$13$BqAi9d2BLyNUih5uCPVhpeZ510ZTK3K1TD0zju91t/xtqHr2MHtDe');
+        $admin->setNomAdm('demo');
+        $admin->setPrenomAdm('dupont');
+        $admin->setEmailAdm('dupont@safer.fr');
+        $admin->setMdpAdm($this->encoder->hashPassword($admin, 'secret'));
         $admin->setRoles('["ROLE_ADMIN"]');
         $manager->persist($admin);
-        //$2y$13$BqAi9d2BLyNUih5uCPVhpeZ510ZTK3K1TD0zju91t/xtqHr2MHtDe
-
-        /*"INSERT INTO admin (id, nom_adm, prenom_adm, email_adm, mdp_adm) \
->>   VALUES (nextval('admin_id_seq'), 'admin', 'admin','admin@safer.fr', \
->>   '\$argon2id\$v=19\$m=65536,t=4,p=1\$BQG+jovPcunctc30xG5PxQ\$TiGbx451NKdo+g9vLtfkMy4KjASKSOcnNxjij4gTX1s')"*/
         $manager->flush();
     }
 }

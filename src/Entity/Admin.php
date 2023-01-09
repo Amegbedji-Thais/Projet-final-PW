@@ -98,7 +98,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getRoles(): array
     {
-        return $this->roles;
+        return ['ROLE_ADMIN'];
     }
 
     public function setRoles(string $roles): self
