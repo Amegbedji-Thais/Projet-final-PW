@@ -5,7 +5,43 @@
 {% endblock %}
 
 {% block body %}
-    <div class="btn-box">
-        {{ form(search_form) }}
+    <div class="container">
+        <div class="row">
+            <div class="col m6 offset-md-3">
+                <h1>Recherches Avancées</h1>
+                {{ form(search_form) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col m6 offset-md-3">
+            {% if app.request.method == 'POST' and biens |length == 0 %}
+                <h2>Aucun résultat</h2>
+            {% else %}
+                {% if biens |length > 0 %}
+                <h1>Résultat de la recherche</h1>
+                    {% for bien in biens %}
+                        <div>
+                            <div class="lower-content">
+                                <div class="title-text"><h4>{{ bien.titrebien }}</h4></div>
+                                <div class="price-box clearfix">
+                                    <div class="price-info pull-left">
+                                        <h4>{{ bien.prixbien }}€</h4>
+                                    </div>
+                                    <ul class="other-option pull-right clearfix">
+                                        <li><a href="{{ path ('app_favoris') }}"><i class="icon-13"></i></a></li>
+                                    </ul>
+                                </div>
+                                <p>{{ bien.descriptionbien }}</p>
+                                <ul class="more-details clearfix">
+                                    <li>{{ bien.surfacebien }}</li>
+                                </ul>
+                                <div class="btn-box"><a href="{{ path('app_details',{'id': bien.getId() }) }}" class="theme-btn btn-two">Voir les détails</a></div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
