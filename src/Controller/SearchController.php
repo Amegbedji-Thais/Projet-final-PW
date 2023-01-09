@@ -14,12 +14,15 @@ class SearchController extends AbstractController
     #[Route('/biens/search', name: 'app_search')]
     public function searchBiens(Request $request, BiensRepository $biensRepo)
     {
+        $biens = null;
+
         $searchBiensForm = $this->createForm(SearchBiensType::class);
 
         if ($searchBiensForm->handleRequest($request)->isSubmitted() && $searchBiensForm->isValid()) {
             $critere = $searchBiensForm->getData();
-            dd($critere);
+
             $biens = $biensRepo->searchBiens($critere);
+
         }
         return $this->render('search/index.html.twig', [
             'search_form' => $searchBiensForm->createView()
