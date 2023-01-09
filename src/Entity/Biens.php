@@ -246,9 +246,9 @@ class Biens
         return $this;
     }
 
-    public function __toString(): string
+    /*public function __toString(): string
     {
         return $this->titre_bien.' '.$this->description_bien.' '.$this->localisation_bien.' '.$this->surface_bien.' '.$this->prix_bien.' '.$this->type_bien.' '.$this->getCategorie()->getTitreCat();
-    }
+    }*/
 
 }

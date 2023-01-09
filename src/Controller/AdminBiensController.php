@@ -41,7 +41,7 @@ class AdminBiensController extends AbstractController
             return $this->redirectToRoute('app_admin_biens_index', [], Response::HTTP_SEE_OTHER);
         }
 
-       //Si le formulaire n'est pas soumis ou pas valide retourner la vue 'admin_bien' avec les variables $bien et $form.
+        //Si le formulaire n'est pas soumis ou pas valide retourner la vue 'admin_bien' avec les variables $bien et $form.
         return $this->renderForm('admin_biens/new.html.twig', [
             'bien' => $bien,
             'form' => $form,
